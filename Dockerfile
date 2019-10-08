@@ -9,6 +9,7 @@ FROM alpine:3.10
 LABEL maintainer "t.kam@f5.com"
 
 ENV TFANSIBLE_REPO https://github.com/tkam8/tfansible.git
+ENV GOOGLE_CREDENTIALS /tmp/gcp_creds.json
 
 # setuid so things like ping work
 #RUN chmod +s /bin/busybox
@@ -38,10 +39,13 @@ RUN echo 'root:default' | chpasswd
 # Expose SSH 
 EXPOSE 22 
 
-#Add libraries to compile ansible
+# Set Work directory
+WORKDIR /home/tfansible
+
+# Add libraries to compile ansible
 RUN apk add --update gcc python-dev linux-headers libc-dev libffi libffi-dev openssl openssl-dev 
 
-#Install ansible
+# Install ansible
 RUN echo "----Installing Ansible----"  && \
     pip install ansible==2.8.5 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review
 
@@ -49,9 +53,10 @@ RUN mkdir -p /etc/ansible                        && \
     echo 'localhost' > /etc/ansible/hosts
 
 # Set the terraform image version
-ENV TERRAFORM_VERSION=0.12.9
-ENV TERRAFORM_SHA256SUM=69712c6216cc09b7eca514b9fb137d4b1fead76559c66f338b4185e1c347ace5
+ENV TERRAFORM_VERSION=0.12.10
+ENV TERRAFORM_SHA256SUM=2215208822f1a183fb57e24289de417c9b3157affbe8a5e520b768edbcb420b4
 
+# Install Terraform
 RUN echo "----Installing Terraform----"  && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     echo "${TERRAFORM_SHA256SUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
@@ -59,3 +64,11 @@ RUN echo "----Installing Terraform----"  && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip  && \
     rm -f terraform_${TERRAFORM_VERSION}_SHA256SUMS
+
+# Clone all templates and initialize Terraform
+
+RUN echo "----Copying terraform and ansible templates repo----"  && \
+    git clone https://github.com/tkam8/NGINX-F5-CDN.git  && \
+    echo "----Initializing GCP terraform template----"  && \
+    cd /NGINX-F5-CDN/tf-ansible-gcp/terraform/  && \
+    terraform init
