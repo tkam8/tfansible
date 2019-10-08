@@ -59,19 +59,3 @@ RUN echo "----Installing Terraform----"  && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip  && \
     rm -f terraform_${TERRAFORM_VERSION}_SHA256SUMS
-
-
-# RUN echo "----Cloning ansible-pan repo----"  && \
-#     git clone https://github.com/PaloAltoNetworks/ansible-pan.git  && \
-#     echo "----Install PaloAltoNetworks from ansible-galaxy----"  && \
-#     ansible-galaxy install PaloAltoNetworks.paloaltonetworks
-
-# RUN echo "----Copying terraform-templates repo----"  && \
-#     git clone https://github.com/PaloAltoNetworks/terraform-templates.git  && \
-#     echo "----initializing one click AWS terraform template---"  && \
-#     cd /terraform-templates/one-click-multi-cloud/one-click-aws && \
-#     terraform init && \
-#     echo "----initializing one click Azure terraform template----"  && \
-#     cd /terraform-templates/one-click-multi-cloud/one-click-azure  && \
-#     terraform init
-
