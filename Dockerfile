@@ -4,7 +4,7 @@
 ############################################################
 
 # Start with ubuntu for now
-FROM ubuntu:18:04
+FROM ubuntu:18.04
 
 LABEL maintainer "t.kam@f5.com"
 
