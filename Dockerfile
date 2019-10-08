@@ -31,7 +31,7 @@ RUN apk add --update openssh openssl bash curl git vim nano python py-pip
 RUN pip install --upgrade pip
 
 # Setup various users and passwords
-RUN useradd -h /home/tfansible -u 1000 -s /bin/bash tfansible -D
+RUN adduser -h /home/tfansible -u 1000 -s /bin/bash tfansible -D
 RUN echo 'tfansible:default' | chpasswd
 RUN echo 'root:default' | chpasswd
 
