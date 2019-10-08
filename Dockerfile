@@ -4,7 +4,7 @@
 ############################################################
 
 # Start with ubuntu for now
-FROM ubuntu:18.04
+FROM alpine:3.10
 
 LABEL maintainer "t.kam@f5.com"
 
@@ -18,8 +18,8 @@ ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.8.0/s6
 RUN gunzip -c /tmp/s6-overlay-amd64.tar.gz | tar -xf - -C / && rm -f /tmp/s6-overlay-amd64.tar.gz
 
 # Add go-dnsmasq so resolver works
-#ADD https://github.com/janeczku/go-dnsmasq/releases/download/1.0.7/go-dnsmasq-min_linux-amd64 /usr/sbin/go-dnsmasq
-#RUN chmod +x /usr/sbin/go-dnsmasq
+ADD https://github.com/janeczku/go-dnsmasq/releases/download/1.0.7/go-dnsmasq-min_linux-amd64 /usr/sbin/go-dnsmasq
+RUN chmod +x /usr/sbin/go-dnsmasq
 
 # Start S6 init 
 ENTRYPOINT ["/init"]
