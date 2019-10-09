@@ -24,6 +24,7 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 
 # Start S6 init 
 ENTRYPOINT ["/init"]
+CMD ["/tfansboot/start"]
 
 # Add useful APKs
 RUN apk add --update openssh openssl bash curl git vim nano python py-pip
@@ -39,8 +40,14 @@ RUN echo 'root:default' | chpasswd
 # Expose SSH 
 EXPOSE 22 
 
+# Copy in base FS from repo
+
+COPY fs /
+
 # Set Work directory
 WORKDIR /home/tfansible
+
+RUN chmod 777 /tmp
 
 # Add libraries to compile ansible
 RUN apk add --update gcc python-dev linux-headers libc-dev libffi libffi-dev openssl openssl-dev 

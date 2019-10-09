@@ -1,0 +1,32 @@
+                                .----------.
+                               /          /
+                              /   ______.'
+                        _.._ /   /_
+                      .' .._/      '''--.
+                      | '  '___          `.
+                    __| |__    `'.         |
+                   |__   __|      )        |
+                      | | ......-'        /
+                      | | \          _..'`
+                      | |  '------'''
+                      | |                     
+                      |_|                     
+
+Welcome to the tfansible container.  This image has the following
+services running:
+
+ SSH  tcp/22
+
+To access these services you may need to remap ports on your host to the
+local container using the command:
+
+ docker run -p 2222:22 -it tkam8/tfansible
+
+You can then connect using the following:
+
+ SSH:  ssh -p 2222 tfansible@localhost
+
+Default Credentials:
+
+ tfansible/default
+ root/default

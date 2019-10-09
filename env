@@ -1,0 +1,6 @@
+TFANSIBLE_REPO=https://github.com/f5devcentral/f5-super-netops-container.git
+TFANSIBLE_GIT_HOST="github.com"
+TFANSIBLE_HOST_HTTP=8080
+TFANSIBLE_HOST_SSH=2222
+TFANSIBLE_AUTOCLONE=1
+TFANSIBLE_GH_BRANCH=master
