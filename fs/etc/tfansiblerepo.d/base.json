@@ -1,0 +1,11 @@
+{
+	"repos": [
+		{
+			"name":"terrytest",
+			"repo":"https://github.com/tkam8/test_repo.git",
+			"branch":"master",
+			"skip":false,
+			"skipinstall":true
+		}
+	]
+}
