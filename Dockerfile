@@ -3,7 +3,7 @@
 # Multi-Stage builds require Docker Engine 17.05 or higher
 ############################################################
 
-# Start with ubuntu for now
+# Start with alpine
 FROM alpine:3.10
 
 LABEL maintainer "t.kam@f5.com"
