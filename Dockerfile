@@ -67,8 +67,8 @@ RUN echo "----Installing Terraform----"  && \
 
 # Clone all templates and initialize Terraform
 
-RUN echo "----Copying terraform and ansible templates repo----"  && \
-    git clone https://github.com/tkam8/NGINX-F5-CDN.git  && \
-    echo "----Initializing GCP terraform template----"  && \
-    cd /NGINX-F5-CDN/tf-ansible-gcp/terraform/  && \
-    terraform init
+# RUN echo "----Copying terraform and ansible templates repo----"  && \
+#     git clone https://github.com/tkam8/NGINX-F5-CDN.git  && \
+#     echo "----Initializing GCP terraform template----"  && \
+#     cd /NGINX-F5-CDN/tf-ansible-gcp/terraform/  && \
+#     terraform init
