@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export TFANSIBLE_HOST_IP=`/sbin/ifconfig eth0 | awk '/inet addr/{print substr($2,6)}'`
-export CONTAINER_ID=`cat /proc/self/cgroup | grep "cpu:/" | sed 's/\([0-9]\):cpu:\/docker\///g'`
-echo "CONTAINER_ID=$CONTAINER_ID" > /tfansboot/TFANSIBLE_ENV
+export CONTAINER_ID=`basename "$(cat /proc/1/cpuset)"`
+#echo "CONTAINER_ID=$CONTAINER_ID" > /tfansboot/TFANSIBLE_ENV
 
 for e in `env`
 do
