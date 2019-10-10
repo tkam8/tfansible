@@ -10,6 +10,8 @@ LABEL maintainer "t.kam@f5.com"
 
 ENV TFANSIBLE_REPO https://github.com/tkam8/tfansible.git
 ENV GOOGLE_CREDENTIALS /tmp/gcp_creds.json
+# The GitHub branch to target for dynamic resources
+ENV TFANSIBLE_GH_BRANCH master
 
 # setuid so things like ping work
 #RUN chmod +s /bin/busybox
@@ -40,10 +42,10 @@ RUN echo 'root:default' | chpasswd
 # Expose SSH 
 EXPOSE 22 
 
-# Copy in base FS from repo
+# Copy in base FS from repo into root
 
 COPY fs /
-RUN chmod +x /tfansboot/start
+RUN chmod +x /tfansboot/*
 
 # Set Work directory
 WORKDIR /home/tfansible

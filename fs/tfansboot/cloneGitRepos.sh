@@ -11,5 +11,5 @@ if [ ! -d "/tmp/tfansible-repo" ]; then
 fi
 
 # the updateRepos script takes in a json file as an argument, and will automatically look for a user-defined /tmp/user_repos.json 
-python /snopsboot/updateRepos.py /tmp/tfansible-repo/images/base/fs/etc/tfansiblerepo.d/base.json
+python /tfansboot/updateRepos.py /tmp/tfansible-repo/fs/etc/tfansiblerepo.d/base.json
 python /tfansboot/cloneGitRepos.py
