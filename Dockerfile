@@ -43,7 +43,7 @@ EXPOSE 22
 # Copy in base FS from repo
 
 COPY fs /
-RUN sudo chmod +x /tfansboot/start
+RUN chmod +x /tfansboot/start
 
 # Set Work directory
 WORKDIR /home/tfansible
