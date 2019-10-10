@@ -24,7 +24,6 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 
 # Start S6 init 
 ENTRYPOINT ["/init"]
-RUN chmod +x /tfansboot/start
 CMD ["/tfansboot/start"]
 
 # Add useful APKs
@@ -44,6 +43,7 @@ EXPOSE 22
 # Copy in base FS from repo
 
 COPY fs /
+RUN chmod +x /tfansboot/start
 
 # Set Work directory
 WORKDIR /home/tfansible
