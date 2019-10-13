@@ -2,6 +2,7 @@
 
 export TFANSIBLE_HOST_IP=`/sbin/ifconfig eth0 | awk '/inet addr/{print substr($2,6)}'`
 export CONTAINER_ID=`basename "$(cat /proc/1/cpuset)"`
+# Uncomment below if you want to add the full container ID in the TFANSIBLE_ENV file
 #echo "CONTAINER_ID=$CONTAINER_ID" > /tfansboot/TFANSIBLE_ENV
 
 for e in `env`

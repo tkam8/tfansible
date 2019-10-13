@@ -45,6 +45,8 @@ EXPOSE 22
 # Copy in base FS from repo into root
 
 COPY fs /
+
+# Set execute permissions for all files under tfansboot
 RUN chmod +x /tfansboot/*
 
 # Set Work directory
