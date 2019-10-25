@@ -59,7 +59,7 @@ RUN apk add --update gcc python-dev linux-headers libc-dev libffi libffi-dev ope
 
 # Install ansible
 RUN echo "----Installing Ansible----"  && \
-    pip install ansible==2.8.5 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review
+    pip install ansible==2.8.5 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review openshift
 
 RUN mkdir -p /etc/ansible                        && \
     echo 'localhost' > /etc/ansible/hosts
@@ -67,6 +67,9 @@ RUN mkdir -p /etc/ansible                        && \
 # Set the terraform image version
 ENV TERRAFORM_VERSION=0.12.10
 ENV TERRAFORM_SHA256SUM=2215208822f1a183fb57e24289de417c9b3157affbe8a5e520b768edbcb420b4
+
+# Set the gcp key location
+ENV GCP_GCE_KEY=/tmp/gcp_key
 
 # Install Terraform
 RUN echo "----Installing Terraform----"  && \
