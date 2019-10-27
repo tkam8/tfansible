@@ -55,14 +55,19 @@ WORKDIR /home/tfansible
 RUN chmod 777 /tmp
 
 # Add libraries to compile ansible
-RUN apk add --update gcc python-dev linux-headers libc-dev libffi libffi-dev openssl openssl-dev 
+RUN apk add --update gcc python-dev linux-headers libc-dev libffi libffi-dev openssl openssl-dev make
 
 # Install ansible
 RUN echo "----Installing Ansible----"  && \
-    pip install ansible==2.8.5 bigsuds f5-sdk netaddr deepdiff ansible-lint ansible-review openshift
+    pip install ansible==2.8.5 bigsuds f5-sdk paramiko netaddr deepdiff ansible-lint ansible-review openshift 
 
 RUN mkdir -p /etc/ansible                        && \
     echo 'localhost' > /etc/ansible/hosts
+
+# Create ansible.cfg file for setting host key checking to false
+RUN echo $'[defaults]\n\
+host_key_checking = False\n'\
+>> /etc/ansible/ansible.cfg
 
 # Set the terraform image version
 ENV TERRAFORM_VERSION=0.12.10
