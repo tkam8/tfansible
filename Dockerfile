@@ -16,7 +16,7 @@ ENV TFANSIBLE_GH_BRANCH master
 # setuid so things like ping work
 #RUN chmod +s /bin/busybox
 
-# Add in S6 overlay so we can run multiple services (while not entirely best practice for containers 1:1 rule)
+# Add in S6 overlay so we can run multiple services 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.8.0/s6-overlay-amd64.tar.gz /tmp/
 RUN gunzip -c /tmp/s6-overlay-amd64.tar.gz | tar -xf - -C / && rm -f /tmp/s6-overlay-amd64.tar.gz
 
