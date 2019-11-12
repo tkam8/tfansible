@@ -17,15 +17,16 @@ ENV TFANSIBLE_GH_BRANCH master
 #RUN chmod +s /bin/busybox
 
 # Add in S6 overlay so we can run multiple services 
-ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.8.0/s6-overlay-amd64.tar.gz /tmp/
-RUN gunzip -c /tmp/s6-overlay-amd64.tar.gz | tar -xf - -C / && rm -f /tmp/s6-overlay-amd64.tar.gz
+# ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.8.0/s6-overlay-amd64.tar.gz /tmp/
+# RUN gunzip -c /tmp/s6-overlay-amd64.tar.gz | tar -xf - -C / && rm -f /tmp/s6-overlay-amd64.tar.gz
 
 # Add go-dnsmasq so resolver works
 ADD https://github.com/janeczku/go-dnsmasq/releases/download/1.0.7/go-dnsmasq-min_linux-amd64 /usr/sbin/go-dnsmasq
 RUN chmod +x /usr/sbin/go-dnsmasq
 
 # Start S6 init 
-ENTRYPOINT ["/init"]
+# ENTRYPOINT ["/init"]
+# Start boot script
 CMD ["/tfansboot/start"]
 
 # Add useful APKs
@@ -85,7 +86,7 @@ RUN echo "----Installing Terraform----"  && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip  && \
     rm -f terraform_${TERRAFORM_VERSION}_SHA256SUMS
 
-# Clone all templates and initialize Terraform
+# Clone all templates and initialize Terraform (public repository)
 
 # RUN echo "----Copying terraform and ansible templates repo----"  && \
 #     git clone https://github.com/tkam8/NGINX-F5-CDN.git  && \
