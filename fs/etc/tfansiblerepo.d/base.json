@@ -1,8 +1,8 @@
 {
 	"repos": [
 		{
-			"name":"terrytest",
-			"repo":"https://github.com/tkam8/test_repo.git",
+			"name":"NGINX-F5-CDN",
+			"repo":"https://github.com/tkam8/NGINX-F5-CDN.git",
 			"branch":"master",
 			"skip":false,
 			"skipinstall":true
