@@ -9,7 +9,6 @@ FROM alpine:3.10
 LABEL maintainer "t.kam@f5.com"
 
 ENV TFANSIBLE_REPO https://github.com/tkam8/tfansible.git
-ENV GOOGLE_CREDENTIALS /tmp/gcp_creds.json
 # The GitHub branch to target for dynamic resources
 ENV TFANSIBLE_GH_BRANCH master
 
@@ -73,9 +72,6 @@ host_key_checking = False\n'\
 # Set the terraform image version
 ENV TERRAFORM_VERSION=0.12.10
 ENV TERRAFORM_SHA256SUM=2215208822f1a183fb57e24289de417c9b3157affbe8a5e520b768edbcb420b4
-
-# Set the gcp key location
-ENV GCP_GCE_KEY=/tmp/gcp_key
 
 # Install Terraform
 RUN echo "----Installing Terraform----"  && \
