@@ -2,7 +2,7 @@
 	"repos": [
 		{
 			"name":"NGINX-F5-CDN",
-			"repo":"https://github.com/tkam8/NGINX-F5-CDN.git",
+			"repo":"https://github.com/f5vcdn/NGINX-F5-vCDN.git",
 			"branch":"master",
 			"skip":false,
 			"skipinstall":true

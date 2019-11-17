@@ -17,10 +17,6 @@ done
 echo "Running boot scripts..."
 /tfansboot/cloneGitRepos.sh
 
-#Copy over the vault file to the expected location
-mkdir /home/tfansible/NGINX-F5-CDN/terraform-ansible-google/NGINX_F5_CDN/ansible/playbooks/group_vars/F5_systems
-cp /tmp/f5_vault /home/tfansible/NGINX-F5-CDN/terraform-ansible-google/NGINX_F5_CDN/ansible/playbooks/group_vars/F5_systems/
-
 # Print motd
 cat /etc/motd
 
