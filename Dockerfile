@@ -29,7 +29,7 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 CMD ["/tfansboot/start"]
 
 # Add useful APKs
-RUN apk add --update openssh openssl bash curl git vim nano python py-pip
+RUN apk add --update openssh openssl bash curl git vim nano python py-pip wget
 
 # Upgrade pip
 RUN pip install --upgrade pip
@@ -69,18 +69,26 @@ RUN echo $'[defaults]\n\
 host_key_checking = False\n'\
 >> /etc/ansible/ansible.cfg
 
-# Set the terraform image version
+# Set the Terraform and Terragrunt image versions
 ENV TERRAFORM_VERSION=0.12.10
 ENV TERRAFORM_SHA256SUM=2215208822f1a183fb57e24289de417c9b3157affbe8a5e520b768edbcb420b4
+ENV TERRAGRUNT_VERSION=v0.21.9
 
 # Install Terraform
 RUN echo "----Installing Terraform----"  && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     echo "${TERRAFORM_SHA256SUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     sha256sum -cs terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
-    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
+    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip  && \
     rm -f terraform_${TERRAFORM_VERSION}_SHA256SUMS
+
+# Install Terragrunt
+RUN echo "----Installing Terragrunt----"  && \
+    wget -O terragrunt_${TERRAGRUNT_VERSION}_linux_amd64 https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 && \
+    chmod +x terragrunt_${TERRAGRUNT_VERSION}_linux_amd64 && \
+    cp terragrunt_${TERRAGRUNT_VERSION}_linux_amd64 /usr/bin && \
+    rm -f terragrunt_${TERRAGRUNT_VERSION}_linux_amd64
 
 # Clone all templates and initialize Terraform (public repository)
 
