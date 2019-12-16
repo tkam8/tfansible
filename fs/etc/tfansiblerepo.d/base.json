@@ -1,11 +1,15 @@
 {
-	"repos": [
-		{
-			"name":"NGINX-F5-CDN",
-			"repo":"https://github.com/f5vcdn/NGINX-F5-vCDN.git",
-			"branch":"master",
-			"skip":false,
-			"skipinstall":true
-		}
-	]
+	"repos": []
 }
+// Taking this private
+// {
+// 	"repos": [
+// 		{
+// 			"name":"NGINX-F5-CDN",
+// 			"repo":"https://github.com/f5vcdn/NGINX-F5-vCDN.git",
+// 			"branch":"master",
+// 			"skip":false,
+// 			"skipinstall":true
+// 		}
+// 	]
+// }
