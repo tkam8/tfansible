@@ -87,7 +87,7 @@ RUN echo "----Installing Terraform----"  && \
 RUN echo "----Installing Terragrunt----"  && \
     wget -O terragrunt_${TERRAGRUNT_VERSION}_linux_amd64 https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 && \
     chmod +x terragrunt_${TERRAGRUNT_VERSION}_linux_amd64 && \
-    cp terragrunt_${TERRAGRUNT_VERSION}_linux_amd64 /usr/bin && \
+    cp terragrunt_${TERRAGRUNT_VERSION}_linux_amd64 /usr/bin/terragrunt && \
     rm -f terragrunt_${TERRAGRUNT_VERSION}_linux_amd64
 
 # Clone all templates and initialize Terraform (public repository)
