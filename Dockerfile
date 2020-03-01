@@ -71,7 +71,7 @@ host_key_checking = False\n'\
 
 # Set the Terraform and Terragrunt image versions
 ENV TERRAFORM_VERSION=0.12.21
-ENV TERRAFORM_SHA256SUM=2215208822f1a183fb57e24289de417c9b3157affbe8a5e520b768edbcb420b4
+ENV TERRAFORM_SHA256SUM=ca0d0796c79d14ee73a3d45649dab5e531f0768ee98da71b31e423e3278e9aa9
 ENV TERRAGRUNT_VERSION=v0.22.5
 
 # Install Terraform
