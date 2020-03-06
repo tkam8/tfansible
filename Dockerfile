@@ -59,7 +59,7 @@ RUN apk add --update gcc python-dev linux-headers libc-dev libffi libffi-dev ope
 
 # Install ansible and required libraries
 RUN echo "----Installing Ansible----"  && \
-    pip install ansible==2.8.8 bigsuds f5-sdk paramiko netaddr deepdiff ansible-lint ansible-review openshift google-auth boto
+    pip install ansible==2.8.8 bigsuds f5-sdk paramiko netaddr deepdiff ansible-lint ansible-review openshift google-auth boto jmespath
 
 RUN mkdir -p /etc/ansible                        && \
     echo 'localhost' > /etc/ansible/hosts
