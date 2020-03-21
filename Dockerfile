@@ -57,6 +57,10 @@ RUN chmod 777 /tmp
 # Add libraries to compile ansible
 RUN apk add --update gcc python-dev linux-headers libc-dev libffi libffi-dev openssl openssl-dev make
 
+# Install google cloud sdk
+RUN curl -sSL https://sdk.cloud.google.com | bash 
+ENV PATH $PATH:/root/google-cloud-sdk/bin
+
 # Install ansible and required libraries
 RUN echo "----Installing Ansible----"  && \
     pip install ansible==2.8.8 bigsuds f5-sdk paramiko netaddr deepdiff ansible-lint ansible-review openshift google-auth boto jmespath
