@@ -29,7 +29,7 @@ RUN chmod +x /usr/sbin/go-dnsmasq
 CMD ["/tfansboot/start"]
 
 # Add useful APKs
-RUN apk add --update openssh openssl bash curl git vim nano python py-pip wget gawk gcc
+RUN apk add --update openssh openssl bash curl git vim nano python py-pip wget gawk gcc g++
 
 # Upgrade pip
 RUN pip install --upgrade pip
