@@ -70,7 +70,8 @@ RUN mkdir -p /etc/ansible                        && \
 
 # Create ansible.cfg file for setting host key checking to false
 RUN echo $'[defaults]\n\
-host_key_checking = False\n'\
+host_key_checking = False\n\
+remote_tmp = /tmp/.ansible-${USER}/tmp\n'\
 >> /etc/ansible/ansible.cfg
 
 # Build xerces-c
